@@ -6,11 +6,11 @@ import router from './router'
 import store from './store/index'
 import networkAPI from './assets/NetworkAPI';
 import iView from 'iview';
-import {initMenu, formatRoutes} from './assets/global'
+import {initMenu, formatRoutes} from './assets/addRouter'
 
 import 'iview/dist/styles/iview.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.prototype.NetworkAPI = networkAPI;
 
 Vue.use(iView);
@@ -20,7 +20,8 @@ router.beforeEach((to, from, next) => {
         next();
         return;
     }
-    var name = store.state.user.name;
+    // 判断登录状态
+    let name = store.state.user.name;
     if (name === '未登录') {
         if (to.meta.requireAuth || to.name == null) {
             next({path: '/', query: {redirect: to.path}})
@@ -31,8 +32,7 @@ router.beforeEach((to, from, next) => {
         initMenu(router, store);
         next();
     }
-    }
-)
+});
 
 /* eslint-disable no-new */
 new Vue({

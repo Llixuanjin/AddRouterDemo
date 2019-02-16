@@ -20,7 +20,7 @@ export const initMenu = (router, store)=> {
 };
 
 /**
- * 将JSON数组数组转为路由数组  一级目录没有组件对应，每个一级目录都对应使用中间组件进行过度，中间组件再使用路由显示二级目录组件
+ * 将JSON数组数组转为路由数组  一级目录没有组件对应，每个一级目录都对应使用中间组件进行过渡，中间组件再使用路由显示二级目录组件
  * 只有一级目录不需要level参数
  * @param routes JSON数组
  * @param level 数组层级，0为master层，1为一级目录层，直接使用中间组件，2为二级目录层根据一级目录去找文件夹下的组件
@@ -43,6 +43,8 @@ export const formatRoutes = (routes, level)=> {
         }
         let fmRouter = {
             path: path,
+            // 根据获取到的数据，找到路由对应的组件，匹配组件根据实际情况而定，比如：导航只有一级不需要使用中间的过渡组件
+            // 使用了node.js的require.resolve 方法操作文件
             component(resolve){
                 console.log(component + level);
                 if (component.startsWith("Master")) {

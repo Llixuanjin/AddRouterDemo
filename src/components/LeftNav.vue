@@ -19,25 +19,13 @@
             </div>
             <div class="master-menu-collapse-list">
                 <div class="master-menu-collapse-item">
-                    <Dropdown>
+                    <Dropdown class="dropdown" v-for="item in navList[0].children" :key="item.id">
                         <a href="javascript:void(0)">
                             <Icon type="ios-settings"/>
                         </a>
                         <DropdownMenu class="ivu-select-dropdown" slot="list">
-                            <DropdownItem>
-                                理想回家
-                            </DropdownItem>
-                            <DropdownItem>
-                                理想回家
-                            </DropdownItem>
-                            <DropdownItem>
-                                理想回家
-                            </DropdownItem>
-                            <DropdownItem>
-                                理想回家
-                            </DropdownItem>
-                            <DropdownItem>
-                                理想回家
+                            <DropdownItem v-for="childItem in item.children" :key="childItem.id" :to="{ path: '/master/' + item.path+ '/' + childItem.path }">
+                                {{childItem.name}}
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
@@ -99,6 +87,10 @@ export default {
     .collapsed-menu {
         z-index: 1;
         width: 250px;
+    }
+
+    .dropdown{
+        display: block;
     }
 </style>
 

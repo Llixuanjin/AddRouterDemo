@@ -22,7 +22,7 @@
                     <div class="master-user-info">
                         <div>技术部</div>
                         <div>
-                            <Dropdown class="master-user-select" @on-click="menuClick">
+                            <Dropdown class="master-user-select">
                                 <a href="javascript:void(0)">
                                     <i class="iconfont icon-icon-test1-copy" style="font-size: 40px;"></i>
                                     <span>{{ staffName }}</span>
