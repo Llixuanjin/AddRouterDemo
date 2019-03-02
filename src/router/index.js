@@ -8,12 +8,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Login',
-      component: Login,
+        path: '/',
+        name: 'Login',
+        component: Login,
         meta:{
-            'keepAlive': false,
-            'requireAuth': true
+            'requireAuth': false
         }
     },
       {
@@ -21,8 +20,7 @@ export default new Router({
           name: 'Login',
           component: Login,
           meta:{
-              'keepAlive': false,
-              'requireAuth': true
+              'requireAuth': false
           }
       },
   ]

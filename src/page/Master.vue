@@ -9,40 +9,10 @@
                     <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu"
                           size="24"></Icon>
                     <Breadcrumb>
-                        <BreadcrumbItem to="/">
-                            <Icon type="ios-home-outline"></Icon> Home
-                        </BreadcrumbItem>
-                        <BreadcrumbItem to="/components/breadcrumb">
-                            <Icon type="logo-buffer"></Icon> Components
-                        </BreadcrumbItem>
-                        <BreadcrumbItem>
-                            <Icon type="ios-cafe"></Icon> Breadcrumb
+                        <BreadcrumbItem v-for="(item, index) in routesName" to="/">
+                            {{item.name}}
                         </BreadcrumbItem>
                     </Breadcrumb>
-                    <div class="master-user-info">
-                        <div>技术部</div>
-                        <div>
-                            <Dropdown class="master-user-select">
-                                <a href="javascript:void(0)">
-                                    <i class="iconfont icon-icon-test1-copy" style="font-size: 40px;"></i>
-                                    <span>{{ staffName }}</span>
-                                </a>
-                                <DropdownMenu slot="list">
-                                    <DropdownItem name="editInfo">
-                                        <Icon type="ios-paper"></Icon>
-                                        编辑资料
-                                    </DropdownItem>
-                                    <DropdownItem name="changeCompany" divided>
-                                        <Icon type="ios-paper"></Icon>
-                                        切换公司
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
-                        </div>
-                        <div>
-                            <Button class="master-loginout" type="text">注销</Button>
-                        </div>
-                    </div>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px', height: '100%'}">
                     <router-view class="page-body"></router-view>
@@ -70,11 +40,17 @@
         created () {
         },
         computed: {
+            // 图标变化
             rotateIcon () {
                 return [
                     'menu-icon',
                     this.isCollapsed ? 'rotate-icon' : ''
                 ];
+            },
+
+            // 路由地址数组
+            routesName () {
+                return this.$store.state.routesName
             }
         },
         methods: {

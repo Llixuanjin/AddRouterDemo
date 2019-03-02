@@ -30,6 +30,8 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         initMenu(router, store);
+        console.log(to)
+        store.commit('updateRoutesName', to.matched);
         next();
     }
 });

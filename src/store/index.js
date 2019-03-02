@@ -9,6 +9,8 @@ export default new Vuex.Store({
             userface: window.localStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).userface
         },
         routes: [],
+
+        routesName: [],
     },
     mutations: {
         login(state, user){
@@ -20,7 +22,10 @@ export default new Vuex.Store({
         },
         initMenu(state, fmtRoutes){
             state.routes = fmtRoutes;
-            window.localStorage.setItem('routes', fmtRoutes);
+        },
+
+        updateRoutesName (state, routesName) {
+            state.routesName = routesName
         }
     }
 });
